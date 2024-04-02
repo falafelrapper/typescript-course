@@ -1,45 +1,49 @@
 "use strict";
-let stringArr = ['one', 'hey', 'Dave'];
-let guitars = ['Strat', 'Les Paul', 5150];
+let stringArr = ['one', 'hey', 'Zach'];
+let drums = ['Tama', 'DW', 1230];
 let mixedData = ['EVH', 1984, true];
-stringArr[0] = 'John';
+stringArr[0] = 'Darlene';
 stringArr.push('hey');
-guitars[0] = 1984;
-guitars.unshift('Jim');
+drums[0] = 1092;
+drums.unshift('Jim');
+// stringArr = drums cant work since stringArr only contains strings, while drums contains both strings and numbers
+drums = stringArr;
+mixedData = drums;
 let test = [];
 let bands = [];
-bands.push('Van Halen');
-// Tuple 
+bands.push('Ling Tosite Sigure');
+// Tuple
 let myTuple = ['Dave', 42, true];
 let mixed = ['John', 1, false];
-myTuple[1] = 42;
+mixed = myTuple;
+// myTuple = mixed doesn't work since the target requires three elements, but the source has fewer elements
+myTuple[1] = 52;
 // Objects
-let myObj;
-myObj = [];
-console.log(typeof myObj);
+let myObj = {};
 myObj = bands;
 myObj = {};
-const exampleObj = {
-    prop1: 'Dave',
+const exampleObject = {
+    prop1: "Zach",
     prop2: true,
 };
-exampleObj.prop1 = 'John';
-let evh = {
-    name: 'Eddie',
-    active: false,
-    albums: [1984, 5150, 'OU812']
+exampleObject.prop1 = 'Zach';
+let np = {
+    name: 'Neil Peart',
+    albums: ['Moving Images', 1970]
 };
-let jp = {
+let mg = {
+    name: 'Matt Gartska',
     active: true,
-    albums: ['I', 'II', 'IV']
+    albums: ['I dont remember rn, its 2AM', 123]
 };
-const greetGuitarist = (guitarist) => {
-    if (guitarist.name) {
-        return `Hello ${guitarist.name.toUpperCase()}!`;
+np = mg;
+const greetDrummer = (drummer) => {
+    if (drummer.name) {
+        return `Hello ${drummer.name.toUpperCase()}!`;
     }
     return 'Hello!';
 };
-console.log(greetGuitarist(jp));
+console.log(greetDrummer(np));
 // Enums 
 // "Unlike most TypeScript features, Enums are not a type-level addition to JavaScript but something added to the language and runtime."
 var Grade;
@@ -51,3 +55,4 @@ var Grade;
     Grade[Grade["A"] = 5] = "A";
 })(Grade || (Grade = {}));
 console.log(Grade.U);
+console.log(Grade.B);

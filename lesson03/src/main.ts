@@ -1,65 +1,74 @@
-let stringArr = ['one', 'hey', 'Dave']
+let stringArr = ['one', 'hey', 'Zach']
 
-let guitars = ['Strat', 'Les Paul', 5150]
+let drums = ['Tama', 'DW', 1230]
 
 let mixedData = ['EVH', 1984, true]
 
-stringArr[0] = 'John'
+stringArr[0] = 'Darlene'
 stringArr.push('hey')
 
-guitars[0] = 1984
-guitars.unshift('Jim')
+drums[0] = 1092
+drums.unshift('Jim')
+
+// stringArr = drums cant work since stringArr only contains strings, while drums contains both strings and numbers
+drums = stringArr
+mixedData = drums
 
 let test = []
 let bands: string[] = []
-bands.push('Van Halen')
+bands.push('Ling Tosite Sigure')
 
-// Tuple 
+// Tuple
 let myTuple: [string, number, boolean] = ['Dave', 42, true]
 
 let mixed = ['John', 1, false]
 
-myTuple[1] = 42
+mixed = myTuple
+// myTuple = mixed doesn't work since the target requires three elements, but the source has fewer elements
+
+myTuple[1] = 52
 
 // Objects
-let myObj: object
-myObj = []
-console.log(typeof myObj)
+let myObj: object = {}
+
 myObj = bands
 myObj = {}
 
-const exampleObj = {
-    prop1: 'Dave',
+const exampleObject = {
+    prop1: "Zach",
     prop2: true,
 }
 
-exampleObj.prop1 = 'John'
+exampleObject.prop1 = 'Zach'
 
-interface Guitarist {
+interface Drummer {
     name?: string,
-    active: boolean,
+    active?: boolean,
     albums: (string | number)[]
 }
 
-let evh: Guitarist = {
-    name: 'Eddie',
-    active: false,
-    albums: [1984, 5150, 'OU812']
+let np: Drummer = {
+    name: 'Neil Peart',
+    albums: ['Moving Images', 1970]
 }
 
-let jp: Guitarist = {
+let mg: Drummer = {
+    name: 'Matt Gartska',
     active: true,
-    albums: ['I', 'II', 'IV']
+    albums: ['I dont remember rn, its 2AM', 123]
 }
 
-const greetGuitarist = (guitarist: Guitarist) => {
-    if (guitarist.name) {
-        return `Hello ${guitarist.name.toUpperCase()}!`
+np = mg
+
+const greetDrummer = (drummer: Drummer) => {
+    if (drummer.name){
+        return `Hello ${drummer.name.toUpperCase()}!`
     }
     return 'Hello!'
 }
 
-console.log(greetGuitarist(jp))
+console.log(greetDrummer(np))
+
 
 // Enums 
 // "Unlike most TypeScript features, Enums are not a type-level addition to JavaScript but something added to the language and runtime."
@@ -73,3 +82,4 @@ enum Grade {
 }
 
 console.log(Grade.U)
+console.log(Grade.B)
