@@ -32,3 +32,26 @@ let nextVal: number = addOrConcat(2, 2, 'concat') as number
 // The above code will get a check, since Typscript still does check type assertions
 (10 as unknown) as string
 // This is an example of two assertions in a row, otherwise known as type casting (dont recommend since it overrules typescript, avoid when possible)
+
+// The DOM
+const img = document.querySelector('img')!
+
+// inferred it is an HTMLImageElement
+
+const myImg = document.getElementById('#img') as HTMLImageElement
+
+// must assert as HTMLImageElement since ids cannot read the file type immediately and will have the option to be null
+
+// inferred as an HTMLElement
+
+img.src
+
+// typescript is okay with this since we specified the assertion above by stating its an HTMLImageElement at the end (previously it didn't include this), now we can reference img.src since it knows it will be an HTMLImageElement
+
+myImg.src
+
+// adding the ! at the end of img asserts it as a 'non-null' assertion
+
+const nextImg = <HTMLImageElement>document.getElementById('#img')
+// another typecast, again this cant be used in React TS
+
