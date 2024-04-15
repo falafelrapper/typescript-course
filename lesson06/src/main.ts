@@ -17,5 +17,5 @@ class Coder {
         this.age = age
         this.lang = lang
 
-    }
+    } 
 }
