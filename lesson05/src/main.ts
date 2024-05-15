@@ -55,3 +55,5 @@ myImg.src
 const nextImg = <HTMLImageElement>document.getElementById('#img')
 // another typecast, again this cant be used in React TS
 
+
+
