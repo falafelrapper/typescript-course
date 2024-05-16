@@ -1,9 +1,9 @@
 "use strict";
-// Index Signatures 
+// Index Sigs
 const todaysTransactions = {
     Pizza: -10,
     Books: -5,
-    Job: 50,
+    Job: 50
 };
 console.log(todaysTransactions.Pizza);
 console.log(todaysTransactions['Pizza']);
@@ -17,14 +17,16 @@ const todaysNet = (transactions) => {
     return total;
 };
 console.log(todaysNet(todaysTransactions));
-//todaysTransactions.Pizza = 40
-console.log(todaysTransactions['Dave']); // undefined
+// Can't be changed since it has been set to readonly
+// todaysTransactions.Pizza = 40
+console.log(todaysTransactions['Dave']);
 const student = {
     name: "Doug",
     GPA: 3.5,
     classes: [100, 200]
 };
 // console.log(student.test)
+// keyof creates a union type that is the specific string literal, allows you to still loop through
 for (const key in student) {
     console.log(`${key}: ${student[key]}`);
 }
@@ -34,6 +36,7 @@ Object.keys(student).map(key => {
 const logStudentKey = (student, key) => {
     console.log(`Student ${key}: ${student[key]}`);
 };
+logStudentKey(student, 'GPA');
 logStudentKey(student, 'name');
 const monthlyIncomes = {
     salary: 500,
