@@ -1,7 +1,5 @@
 const echo = <T>(arg: T): T => arg
 
-//////////////////////////////////
-
 const isObj = <T>(arg: T): boolean => {
     return (typeof arg === 'object' && !Array.isArray(arg) && arg !== null)
 }
@@ -11,8 +9,6 @@ console.log(isObj('John'))
 console.log(isObj([1, 2, 3]))
 console.log(isObj({ name: 'John' }))
 console.log(isObj(null))
-
-///////////////////////////////////
 
 const isTrue = <T>(arg: T): { arg: T, is: boolean } => {
     if (Array.isArray(arg) && !arg.length) {
@@ -32,15 +28,14 @@ console.log(isTrue('Dave'))
 console.log(isTrue(''))
 console.log(isTrue(null))
 console.log(isTrue(undefined))
-console.log(isTrue({})) // modified
+console.log(isTrue({}))
 console.log(isTrue({ name: 'Dave' }))
-console.log(isTrue([])) // modified
+console.log(isTrue([]))
 console.log(isTrue([1, 2, 3]))
 console.log(isTrue(NaN))
 console.log(isTrue(-0))
 
-////////////////////////////////////
-
+// Using a type interface with a generic allows us to do a similar function as isTrue but using the interface instead of setting the { arg: T, is: boolean }
 interface BoolCheck<T> {
     value: T,
     is: boolean,
@@ -58,12 +53,11 @@ const checkBoolValue = <T>(arg: T): BoolCheck<T> => {
 
 //////////////////////////////////////
 
-
-interface HasID {
+interface hasID {
     id: number
 }
 
-const processUser = <T extends HasID>(user: T): T => {
+const processUser = <T extends hasID>(user: T): T => {
     // process the user with logic here 
     return user
 }
@@ -73,8 +67,7 @@ console.log(processUser({ id: 1, name: 'Dave' }))
 
 ///////////////////////////////////////
 
-
-const getUsersProperty = <T extends HasID, K extends keyof T>(users: T[], key: K): T[K][] => {
+const getUsersProperty = <T extends hasID, K extends keyof T>(users: T[], key: K): T[K][] => {
     return users.map(user => user[key])
 }
 
@@ -130,12 +123,10 @@ const usersArray = [
 console.log(getUsersProperty(usersArray, "email"))
 console.log(getUsersProperty(usersArray, "username"))
 
-///////////////////////////////////////
-
 class StateObject<T> {
     private data: T
 
-    constructor(value: T) {
+    constructor(value: T){
         this.data = value
     }
 
@@ -143,7 +134,7 @@ class StateObject<T> {
         return this.data
     }
 
-    set state(value: T) {
+    set state(value: T){
         this.data = value
     }
 }
@@ -153,6 +144,6 @@ console.log(store.state)
 store.state = "Dave"
 //store.state = 12
 
-const myState = new StateObject<(string | number | boolean)[]>([15])
-myState.state = ['Dave', 42, true]
+const myState = new StateObject<(string|number|boolean)[]>([15])
+myState.state = (["Dave", 42, true])
 console.log(myState.state)

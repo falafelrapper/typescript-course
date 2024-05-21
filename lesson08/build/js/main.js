@@ -25,9 +25,9 @@ console.log(isTrue('Dave'));
 console.log(isTrue(''));
 console.log(isTrue(null));
 console.log(isTrue(undefined));
-console.log(isTrue({})); // modified
+console.log(isTrue({}));
 console.log(isTrue({ name: 'Dave' }));
-console.log(isTrue([])); // modified
+console.log(isTrue([]));
 console.log(isTrue([1, 2, 3]));
 console.log(isTrue(NaN));
 console.log(isTrue(-0));
@@ -46,6 +46,7 @@ const processUser = (user) => {
 };
 console.log(processUser({ id: 1, name: 'Dave' }));
 //console.log(processUser({ name: 'Dave'}))
+///////////////////////////////////////
 const getUsersProperty = (users, key) => {
     return users.map(user => user[key]);
 };
@@ -115,5 +116,5 @@ console.log(store.state);
 store.state = "Dave";
 //store.state = 12
 const myState = new StateObject([15]);
-myState.state = ['Dave', 42, true];
+myState.state = (["Dave", 42, true]);
 console.log(myState.state);
