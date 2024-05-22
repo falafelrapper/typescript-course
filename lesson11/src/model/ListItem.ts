@@ -1,7 +1,7 @@
 export interface Item {
     id: string,
     item: string,
-    checked: boolean,
+    checked: boolean
 }
 
 export default class ListItem implements Item {
@@ -16,7 +16,7 @@ export default class ListItem implements Item {
         return this._id
     }
 
-    set id(id: string) {
+    set id(id: string){
         this._id = id
     }
 
@@ -24,15 +24,15 @@ export default class ListItem implements Item {
         return this._item
     }
 
-    set item(item: string) {
+    set item(item: string){
         this._item = item
     }
 
-    get checked(): boolean {
+    get checked(): boolean{
         return this._checked
     }
 
-    set checked(checked: boolean) {
+    set checked(checked: boolean){
         this._checked = checked
     }
 }

@@ -1,4 +1,4 @@
-import ListItem from './ListItem'
+import ListItem from "./ListItem";
 
 interface List {
     list: ListItem[],
@@ -13,7 +13,9 @@ export default class FullList implements List {
 
     static instance: FullList = new FullList()
 
-    private constructor(private _list: ListItem[] = []) { }
+    private constructor(
+        private _list: ListItem[] = []
+    ) { }
 
     get list(): ListItem[] {
         return this._list

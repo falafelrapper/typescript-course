@@ -1,4 +1,4 @@
-import FullList from "../model/FullList"
+import FullList from "../model/FullList";
 
 interface DOMList {
     ul: HTMLUListElement,
@@ -7,7 +7,6 @@ interface DOMList {
 }
 
 export default class ListTemplate implements DOMList {
-
     ul: HTMLUListElement
 
     static instance: ListTemplate = new ListTemplate()
@@ -33,19 +32,14 @@ export default class ListTemplate implements DOMList {
             check.checked = item.checked
             li.append(check)
 
-            check.addEventListener('change', () => {
-                item.checked = !item.checked
-                fullList.save()
-            })
-
             const label = document.createElement("label") as HTMLLabelElement
             label.htmlFor = item.id
             label.textContent = item.item
             li.append(label)
 
             const button = document.createElement("button") as HTMLButtonElement
-            button.className = 'button'
-            button.textContent = 'X'
+            button.className = "button"
+            button.textContent = "X"
             li.append(button)
 
             button.addEventListener('click', () => {
