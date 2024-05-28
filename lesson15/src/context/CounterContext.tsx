@@ -1,11 +1,11 @@
-import { createContext, useReducer, ChangeEvent, ReactElement, useCallback, useContext } from "react"
+import { createContext, useReducer, ChangeEvent, ReactElement, useCallback, useContext } from "react";
 
 type StateType = {
-    count: number;
-    text: string;
+    count: number,
+    text: string,
 }
 
-const initState: StateType = { count: 0, text: '' }
+export const initState: StateType = { count: 0, text: '' }
 
 const enum REDUCER_ACTION_TYPE {
     INCREMENT,
@@ -18,7 +18,7 @@ type ReducerAction = {
     payload?: string,
 }
 
-const reducer = (state: StateType, action: ReducerAction): StateType => {
+const reducer = (state: StateType, action: ReducerAction): typeof initState => {
     switch (action.type) {
         case REDUCER_ACTION_TYPE.INCREMENT:
             return { ...state, count: state.count + 1 }
@@ -35,7 +35,6 @@ const useCounterContext = (initState: StateType) => {
     const [state, dispatch] = useReducer(reducer, initState)
 
     const increment = useCallback(() => dispatch({ type: REDUCER_ACTION_TYPE.INCREMENT }), [])
-
     const decrement = useCallback(() => dispatch({ type: REDUCER_ACTION_TYPE.DECREMENT }), [])
 
     const handleTextInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -60,14 +59,14 @@ const initContextState: UseCounterContextType = {
 export const CounterContext = createContext<UseCounterContextType>(initContextState)
 
 type ChildrenType = {
-    children?: ReactElement | ReactElement[] | undefined
+    children?: ReactElement | undefined
 }
 
 export const CounterProvider = ({
-    children
-}: ChildrenType): ReactElement => {
+    children, ...initState
+}: ChildrenType & StateType): ReactElement => {
     return (
-        <CounterContext.Provider value={useCounterContext(initState)}>
+        <CounterContext.Provider value={useCounterContext(initState)} >
             {children}
         </CounterContext.Provider>
     )
@@ -86,7 +85,7 @@ export const useCounter = (): UseCounterHookType => {
 
 type UseCounterTextHookType = {
     text: string,
-    handleTextInput: (e: ChangeEvent<HTMLInputElement>) => void,
+    handleTextInput: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const useCounterText = (): UseCounterTextHookType => {
